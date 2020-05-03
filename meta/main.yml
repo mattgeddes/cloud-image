@@ -15,5 +15,5 @@ galaxy_info:
             - disco
             - cosmic
             - bionic
-  galaxy_tags: ["cloud-init", "virt", "cloud"]
+  galaxy_tags: ["cloudinit", "virt", "cloud"]
 dependencies: []
