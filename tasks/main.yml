@@ -6,9 +6,13 @@
 - name: Retrieve cloud-init images
   get_url:
       url: "{{ item.repo | default( 'https://cloud-images.ubuntu.com' ) }}/{{ item.codename | default( 'focal' ) }}/{{ item.version | default( 'current' ) }}/{{ item.codename | default( 'focal' ) }}-server-cloudimg-{{ item.arch | default( 'amd64' ) }}.img"
-      dest: "{{ template_path }}/"
+      dest: "{{ template_path }}/{{ item.filename }}"
   when: item.type == "Ubuntu"
   with_items: "{{ cloud_images }}"
   register: downloaded
 - debug:
-    msg: var=downloaded
+    var: downloaded
+- name: Resize image
+  command:
+      cmd: "/usr/bin/qemu-img resize {{ template_path }}/{{ item.filename }} {{ item.size }}"
+  with_items: "{{ cloud_images }}"
