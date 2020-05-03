@@ -15,4 +15,5 @@
 - name: Resize image
   command:
       cmd: "/usr/bin/qemu-img resize {{ template_path }}/{{ item.filename }} {{ item.size }}"
+  when: downloaded.changed
   with_items: "{{ cloud_images }}"
