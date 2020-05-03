@@ -16,4 +16,4 @@ galaxy_info:
             - cosmic
             - bionic
   galaxy_tags: ["cloud-init", "virt", "cloud"]
-dependencies: ["qemu-img"]
+dependencies: []
