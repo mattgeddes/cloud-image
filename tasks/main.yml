@@ -10,10 +10,3 @@
   when: item.type == "Ubuntu"
   with_items: "{{ cloud_images }}"
   register: downloaded
-- debug:
-    var: downloaded
-- name: Resize image
-  command:
-      cmd: "/usr/bin/qemu-img resize {{ template_path }}/{{ item.filename }} {{ item.size }}"
-  when: downloaded.changed
-  with_items: "{{ cloud_images }}"
