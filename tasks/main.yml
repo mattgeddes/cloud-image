@@ -1,0 +1,11 @@
+---
+- name: Retrieve cloud-init images
+  get_url:
+      url: "{{ item.repo | default( 'https://cloud-images.ubuntu.com' ) }}/{{ item.codename | default( 'focal' ) }}/{{ item.version | default( 'current' ) }}/{{ item.codename | default( 'focal' ) }}-server-cloudimg-{{ item.arch | default( 'amd64' ) }}.img"
+      dest: "{{ template_path }}/"
+  when: item.type == "Ubuntu"
+  with_items: "{{ cloud_images }}"
+  register: downloaded
+
+- debug:
+    msg: var=downloaded
