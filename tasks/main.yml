@@ -7,6 +7,6 @@
   get_url:
       url: "{{ item.repo | default( 'https://cloud-images.ubuntu.com' ) }}/{{ item.codename | default( 'focal' ) }}/{{ item.version | default( 'current' ) }}/{{ item.codename | default( 'focal' ) }}-server-cloudimg-{{ item.arch | default( 'amd64' ) }}.img"
       dest: "{{ template_path }}/{{ item.filename }}"
-  when: item.type == "Ubuntu"
+  when: item.type == "Ubuntu" or item.type == "Debian"
   with_items: "{{ cloud_images }}"
   register: downloaded
