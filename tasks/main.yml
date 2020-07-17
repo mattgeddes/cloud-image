@@ -12,7 +12,7 @@
   register: downloaded
 - name: Retrieve cloud-init images
   get_url:
-      url: "{{ item.repo | default( 'https://cdimage.debian.org/cdimage/cloud' ) }}/{{ item.codename | default( 'buster' ) }}/{{ item.version | default( 'current' ) }}/debian-10-nocloud-{{ item.arch | default( 'amd64' ) }}-{{ item.version }}.img"
+      url: "{{ item.repo | default( 'https://cdimage.debian.org/cdimage/cloud' ) }}/{{ item.codename | default( 'buster' ) }}/{{ item.version | default( 'current' ) }}/debian-10-nocloud-{{ item.arch | default( 'amd64' ) }}-{{ item.version }}.qcow2"
       dest: "{{ template_path }}/{{ item.filename }}"
   when: item.type == "Debian"
   with_items: "{{ cloud_images }}"
