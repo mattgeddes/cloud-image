@@ -8,23 +8,31 @@ repos:
     opensuse: "https://download.opensuse.org/repositories/Cloud:/Images:"
     cirros: "http://download.cirros-cloud.net"
     archlinux: "https://linuximages.de/openstack/arch"
-default_images:
-    - bionic-server
-all_images:
-    - focal-server
-    - bionic-server
-    - groovy-server
-    - focal-minimal
-    - bionic-minimal
-    - centos-8.2.2004
-    - centos-7.8.2003
-    - centos-8-stream
-    - fedora-32
-    - debian-buster
-    - debian-stretch
-    - opensuse-leap15.2
-    - archlinux-cloud
-    - cirros-0.5.1
+image_collections:
+    default:
+        - bionic-server
+    all:
+        - focal-server
+        - bionic-server
+        - groovy-server
+        - focal-minimal
+        - bionic-minimal
+        - centos-8.2.2004
+        - centos-7.8.2003
+        - centos-8-stream
+        - fedora-32
+        - debian-buster
+        - debian-stretch
+        - opensuse-leap15.2
+        - archlinux-cloud
+        - cirros-0.5.1
+    supported:
+        - focal-server
+        - bionic-server
+        - centos-7.8.2003
+        - debian-buster
+        - debian-stretch
+        - opensuse-leap15.2
 cloud_images_list:
     - name: "Ubuntu Server 20.04 LTS (Focal Fossal)"
       url: "{{ repos.ubuntu }}/focal/20200728/focal-server-cloudimg-amd64.img"

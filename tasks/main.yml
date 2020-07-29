@@ -5,7 +5,7 @@
       state: directory
 - name: Default images list
   set_fact:
-      images: "{{ default_images }}"
+      images: "{{ collections.default_images }}"
   when: images is not defined
 - name: Image tree
   file:
