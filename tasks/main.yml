@@ -33,7 +33,7 @@
   register: downloaded
 - name: Retrieve OpenSuSE cloud-init images
   get_url:
-      url: "{{ item.repo | default( 'https://download.opensuse.org/repositories/Cloud:/Images:/Leap_{{ item.version | default('15.2' ) }}/images/openSUSE-Leap-{{ item.version | default('15.2') }}-OpenStack.{{ item.arch | default('x86_64') }}.qcow2"
+      url: "{{ item.repo | default( 'https://download.opensuse.org/repositories/Cloud:/Images:' ) }}/Leap_{{ item.version | default('15.2' ) }}/images/openSUSE-Leap-{{ item.version | default('15.2') }}-OpenStack.{{ item.arch | default('x86_64') }}.qcow2"
       dest: "{{ template_path }}/{{ item.filename }}"
   when: item.type == "Fedora"
   with_items: "{{ cloud_images }}"
