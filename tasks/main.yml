@@ -40,14 +40,14 @@
   register: downloaded
 - name: Retrieve CentOS-8 cloud-init images
   get_url:
-      url: "{{ item.repo | default( 'https://cloud.centos.org/centos/{{ item.version | default('8') }}/{{ item.arch | default('x86_64') }}/images/CentOS-{{ item.version | default('8') }}-GenericCloud-{{ item.build | default('8.2.2004-20200611.2') }}.{{ item.arch | default('x86_64') }}.qcow2"
+      url: "{{ item.repo | default( 'https://cloud.centos.org/centos' ) }}/{{ item.version | default('8') }}/{{ item.arch | default('x86_64') }}/images/CentOS-{{ item.version | default('8') }}-GenericCloud-{{ item.build | default('8.2.2004-20200611.2') }}.{{ item.arch | default('x86_64') }}.qcow2"
       dest: "{{ template_path }}/{{ item.filename }}"
   when: item.type == "CentOS-8"
   with_items: "{{ cloud_images }}"
   register: downloaded
 - name: Retrieve CentOS-7 cloud-init images
   get_url:
-      url: "{{ item.repo | default( 'https://cloud.centos.org/centos/{{ item.version | default('7') }}/images/CentOS-{{ item.version | default('7') }}-{{ item.arch | default('x86_64') }}-GenericCloud-{{ item.build | default('2003') }}.qcow2"
+      url: "{{ item.repo | default( 'https://cloud.centos.org/centos' ) }}/{{ item.version | default('7') }}/images/CentOS-{{ item.version | default('7') }}-{{ item.arch | default('x86_64') }}-GenericCloud-{{ item.build | default('2003') }}.qcow2"
       dest: "{{ template_path }}/{{ item.filename }}"
   when: item.type == "CentOS-7"
   with_items: "{{ cloud_images }}"
