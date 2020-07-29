@@ -12,9 +12,9 @@
   register: downloaded
 - name: Retrieve Minimal Ubuntu cloud-init images
   get_url:
-      url: "{{ item.repo | default( 'https://cloud-images.ubuntu.com/minimal' ) }}/{{ item.codename | default( 'focal' ) }}/{{ item.version | default( 'release' ) }}/ubuntu-{{ item.majorver }}-minimal-cloudimg-{{ item.arch | default( 'amd64' ) }}.img"
+      url: "{{ item.repo | default( 'https://cloud-images.ubuntu.com/minimal/releases' ) }}/{{ item.codename | default( 'focal' ) }}/{{ item.version | default( 'release' ) }}/ubuntu-{{ item.majorver }}-minimal-cloudimg-{{ item.arch | default( 'amd64' ) }}.img"
       dest: "{{ template_path }}/{{ item.filename }}"
-  when: item.type == "Ubuntu"
+  when: item.type == "Ubuntu-minimal"
   with_items: "{{ cloud_images }}"
   register: downloaded
 - name: Retrieve Debian cloud-init images
