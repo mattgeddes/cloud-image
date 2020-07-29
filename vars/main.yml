@@ -1,2 +1,112 @@
 ---
-# vars file for cloud-image
+repos:
+    ubuntu: "https://cloud-images.ubuntu.com"
+    ubuntumin: "https://cloud-images.ubuntu.com/minimal/releases"
+    centos: "https://cloud.centos.org/centos"
+    fedora: "https://download.fedoraproject.org/pub/fedora/linux/releases"
+    debian: "https://cdimage.debian.org/cdimage/cloud"
+    opensuse: "https://download.opensuse.org/repositories/Cloud:/Images:"
+    cirros: "http://download.cirros-cloud.net"
+    archlinux: "https://linuximages.de/openstack/arch"
+default_images:
+    - bionic-server
+all_images:
+    - focal-server
+    - bionic-server
+    - groovy-server
+    - focal-minimal
+    - bionic-minimal
+    - centos-8.2.2004
+    - centos-7.8.2003
+    - centos-8-stream
+    - fedora-32
+    - debian-buster
+    - debian-stretch
+    - opensuse-leap15.2
+    - archlinux-cloud
+    - cirros-0.5.1
+cloud_images_list:
+    - name: "Ubuntu Server 20.04 LTS (Focal Fossal)"
+      url: "{{ repos.ubuntu }}/focal/20200728/focal-server-cloudimg-amd64.img"
+      filename: "focal-server-cloudimg-20200728-amd64.img"
+      format: "qcow2"
+      family: Ubuntu
+      label: focal-server
+    - name: "Ubuntu Server 18.04 LTS (Bionic Beaver)"
+      url: "{{ repos.ubuntu }}/bionic/20200724/bionic-server-cloudimg-amd64.img"
+      filename: "bionic-server-cloudimg-20200724-amd64.img"
+      format: "qcow2"
+      family: Ubuntu
+      label: bionic-server
+    - name: "Ubuntu Server 20.10 (Groovy Gorilla)"
+      url: "{{ repos.ubuntu }}/groovy/20200728/groovy-server-cloudimg-amd64.img"
+      filename: "groovy-server-cloudimg-20200728-amd64.img"
+      format: "qcow2"
+      family: Ubuntu
+      label: groovy-server
+    - name: "Ubuntu Minimal 20.04 LTS (Focal Fossal)"
+      url: "{{ repos.ubuntumin }}/focal/release-20200703/ubuntu-20.04-minimal-cloudimg-amd64.img"
+      filename: "focal-minimal-cloudimg-20200703-amd64.img"
+      format: "qcow2"
+      family: Ubuntu
+      label: focal-minimal
+    - name: "Ubuntu Minimal 18.04 LTS (Bionic Beaver)"
+      url: "{{ repos.ubuntumin }}/bionic/release-20200724/ubuntu-18.04-minimal-cloudimg-amd64.img"
+      filename: "bionic-minimal-cloudimg-20200724-amd64.img"
+      format: "qcow2"
+      family: Ubuntu
+      label: bionic-minimal
+    - name: "CentOS 8.2.2004-20200611"
+      url: "{{ repos.centos }}/8/x86_64/images/CentOS-8-GenericCloud-8.2.2004-20200611.2.x86_64.qcow2"
+      filename: "CentOS-8-GenericCloud-8.2.2004-20200611.2.x86_64.qcow2"
+      format: "qcow2"
+      family: CentOS
+      label: centos-8.2.2004
+    - name: "CentOS 7.8.2003"
+      url: "{{ repos.centos }}/7/images/CentOS-7-x86_64-GenericCloud-2003.qcow2"
+      filename: "CentOS-7-GenericCloud-7.8.2003.x86_64.qcow2"
+      format: "qcow2"
+      family: CentOS
+      label: centos-7.8.2003
+    - name: "CentOS Stream 8-20200113.0"
+      url: "{{ repos.centos }}/8-stream/x86_64/images/CentOS-Stream-GenericCloud-8-20200113.0.x86_64.qcow2"
+      filename: "CentOS-Stream-GenericCloud-8-20200113.0.x86_64.qcow2"
+      format: "qcow2"
+      family: CentOS
+      label: centos-8-stream
+    - name: "Fedora 32-1.6"
+      url: "{{ repos.fedora }}/32/Cloud/x86_64/images/Fedora-Cloud-Base-32-1.6.x86_64.qcow2"
+      filename: "Fedora-Cloud-Base-32-1.6.x86_64.qcow2"
+      format: "qcow2"
+      family: Fedora
+      label: fedora-32
+    - name: "Debian 10 (Buster)"
+      url: "{{ repos.debian }}/buster/20200610-293/debian-10-nocloud-amd64-20200610-293.qcow2"
+      filename: "debian-10-nocloud-amd64-20200610-293.qcow2"
+      format: "qcow2"
+      family: Debian
+      label: debian-buster
+    - name: "Debian 10 (Buster)"
+      url: "{{ repos.debian }}/stretch/daily/20200210-166/debian-9-nocloud-amd64-daily-20200210-166.qcow2"
+      filename: "debian-9-nocloud-amd64-20200210-166.qcow2"
+      format: "qcow2"
+      family: Debian
+      label: debian-stretch
+    - name: "OpenSuSE Leap 15.2"
+      url: "{{ repos.opensuse }}/Leap_15.2/images/openSUSE-Leap-15.2-OpenStack.x86_64.qcow2"
+      filename: "openSUSE-Leap-15.2-OpenStack.x86_64.qcow2"
+      format: "qcow2"
+      family: OpenSuSE
+      label: opensuse-leap15.2
+    - name: "ArchLinux Cloud"
+      url: "{{ repos.archlinux }}/arch-openstack-2020-07-29-06-25-image-bootstrap-2.0.4-2-g7e8b472.qcow2"
+      filename: "arch-openstack-2020-07-29-06-25-image-bootstrap-2.0.4-2-g7e8b472.qcow2"
+      format: "qcow2"
+      family: ArchLinux
+      label: archlinux-cloud
+    - name: "CirrOS 0.5.1"
+      url: "{{ repos.cirros }}/0.5.1/cirros-0.5.1-x86_64-disk.img"
+      filename: "cirros-0.5.1-x86_64-disk.img"
+      format: "qcow2"
+      family: CirrOS
+      label: cirros-0.5.1
