@@ -39,7 +39,7 @@
   when: export_url is defined
 - name: Add local repo metadata content
   set_fact:
-      repo_metadata: '{{ repo_metadata + [ { "url": export_url + "/" + item.item.family + "/" + item.item.label + "/" + item.item.label, "filename": item.item.filename, "name": item.item.name, "family": item.item.family, "label": item.item.label, "format": item.item.format } ] }}'
+      repo_metadata: '{{ repo_metadata + [ { "url": export_url + "/" + item.item.family + "/" + item.item.label + "/" + item.item.filename, "filename": item.item.filename, "name": item.item.name, "family": item.item.family, "label": item.item.label, "format": item.item.format } ] }}'
   when: export_url is defined and item.skipped is not defined
   with_items:
       - "{{ downloaded.results }}"
