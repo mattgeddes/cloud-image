@@ -8,6 +8,7 @@
   set_fact:
       collections: "{{ remote_list.json.collections }}"
       cloud_images_list: "{{ remote_list.json.images }}"
+  when: remote_list is defined and image_repo_uri is defined
 - name: Cloud images directory
   file:
       path: "{{ image_repo_dir }}"
