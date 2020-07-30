@@ -1,4 +1,13 @@
 ---
+- name: Retrieve remote images list
+  uri:
+      url: "{{ image_repo_uri }}"
+  when: image_repo_uri is defined
+  register: remote_list
+- name: Set images list
+  set_fact:
+      collections: "{{ remote_list.json.collections }}"
+      cloud_images_list: "{{ remote_list.json.images }}"
 - name: Cloud images directory
   file:
       path: "{{ image_repo_dir }}"
@@ -22,9 +31,22 @@
   with_items:
       - "{{ cloud_images_list }}"
   register: downloaded
-- name: Images list
-  debug: var=images
+  ignore_errors: true
+- name: Create local repo metadata object
+  set_fact:
+      repo_metadata: []
+  when: export_url is defined
+- name: Add local repo metadata content
+  set_fact:
+      repo_metadata: '{{ repo_metadata + [ { "url": export_url + "/" + item.item.family + "/" + item.item.label + "/" + item.item.label, "filename": item.item.filename, "name": item.item.name, "family": item.item.family, "label": item.item.label, "format": item.item.format } ] }}'
+  when: export_url is defined and item.skipped is not defined
+  with_items:
+      - "{{ downloaded.results }}"
+- name: Package repo metadata
+  set_fact:
+      repo_collections: {"all": "{{ images }}"}
 - name: Downloaded images metadata
   copy:
       dest: "{{ image_repo_dir }}/metadata.json"
-      content: "{{ downloaded }}"
+      content: {"collections": "{{ repo_collections }}", "images": "{{ repo_metadata }}"}
+  when: repo_metadata is defined
