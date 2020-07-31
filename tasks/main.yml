@@ -49,5 +49,5 @@
 - name: Downloaded images metadata
   copy:
       dest: "{{ image_repo_dir }}/metadata.json"
-      content: {"collections": "{{ repo_collections }}", "images": "{{ repo_metadata }}"}
+      content: {"collections": "{{ repo_collections }}", "media": "{{ repo_metadata }}"}
   when: repo_metadata is defined
